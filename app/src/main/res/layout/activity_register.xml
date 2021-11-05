@@ -6,4 +6,87 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/namereg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".2"
+        app:layout_constraintHorizontal_bias=".5"
+        android:hint="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/namawarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailreg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".3"
+        app:layout_constraintHorizontal_bias=".5"
+        android:hint="Email"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailwarningreg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordreg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintWidth_percent=".8"
+        app:layout_constraintVertical_bias=".4"
+        app:layout_constraintHorizontal_bias=".5"
+        android:hint="Password"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/passwordwarningreg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="319dp"
+        android:layout_height="65dp"
+        android:textSize="14dp"
+        android:textColor="@color/black"
+        android:text="I would like to receive your newsletter and other promotional information."
+        app:layout_constraintBottom_toTopOf="@+id/signup"
+        app:layout_constraintTop_toBottomOf="@+id/passwordreg"
+        app:layout_constraintVertical_bias="0.368"
+        tools:layout_editor_absoluteX="46dp" />
+
+    <Button
+        android:id="@+id/signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent=".6"
+        app:layout_constraintVertical_bias=".6"
+        android:text="Sign Up"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
