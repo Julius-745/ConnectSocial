@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.window.SplashScreen;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -23,7 +22,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // ambil mainactivity
-                Intent main = new Intent(SplashScreenActivity.this,MainActivity.class);
+                Intent main = new Intent(SplashScreenActivity.this,LoginActivity.class);
                 // load mainactivity (bagian e julius)
                 SplashScreenActivity.this.startActivity(main);
                 SplashScreenActivity.this.finish();
