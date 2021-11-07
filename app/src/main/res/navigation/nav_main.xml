@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/contentFragment">
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="com.julius745.connect.MainActivity"
+        android:label="activity_main"
+        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/contentFragment"
+        android:name="com.julius745.connect.fragment.ContentFragment"
+        android:label="fragment_content"
+        tools:layout="@layout/fragment_content" />
+    <fragment
+        android:id="@+id/addpostFragment"
+        android:name="com.julius745.connect.fragment.AddpostFragment"
+        android:label="fragment_addpost"
+        tools:layout="@layout/fragment_addpost" />
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.julius745.connect.fragment.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>
