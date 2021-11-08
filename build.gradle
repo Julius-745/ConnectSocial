@@ -5,10 +5,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.0.2"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0-alpha02"
-
-        // NOTE: Do not place your application dependencies here; they belong
+        classpath 'com.android.tools.build:gradle:7.0.3'
         // in the individual module build.gradle files
     }
 
