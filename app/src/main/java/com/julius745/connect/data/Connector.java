@@ -1,6 +1,7 @@
 package com.julius745.connect.data;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -8,11 +9,11 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Connector {
 
-    public static HttpsURLConnection connect(String urlAddress){
+    public static HttpURLConnection connect(String urlAddress){
       try
       {
           URL url = new URL(urlAddress);
-          HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
+          HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
           con.setRequestMethod("POST");
           con.setConnectTimeout(20000);
