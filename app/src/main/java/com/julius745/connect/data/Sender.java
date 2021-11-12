@@ -91,10 +91,11 @@ public class Sender extends AsyncTask<Void,Void,String> {
                 }
 
                 br.close();
+                System.out.print("RESPON OK");
 
                 return response.toString();
             } else {
-
+                System.out.print("RESPON GAGAL");
             }
         } catch (IOException e){
             e.printStackTrace();

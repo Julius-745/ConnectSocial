@@ -2,11 +2,8 @@
 
 require "init.php";
 
-// Takes raw data from the request
-$json = file_get_contents('php://input');
-
 // Converts it into a PHP object
-$data = json_decode($json);
+$data = $_POST;
 
 if (!isset($data['username'], $data['password'])) {
     header("HTTP/1.1 403 Forbidden");
