@@ -20,8 +20,8 @@ public class DataPackager {
         StringBuffer packedData = new StringBuffer();
 
         try{
-            jo.put("Username", username);
-            jo.put("Password", password);
+            jo.put("username", username);
+            jo.put("password", password);
 
             Boolean firstvalue = true;
 
