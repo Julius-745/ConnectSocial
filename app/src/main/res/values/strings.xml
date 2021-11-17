@@ -21,4 +21,11 @@
     <string name="text_post">Post</string>
     <string name="gambar">Gambar</string>
     <string name="send">Send</string>
+    <string name="log_out">Logout</string>
+    <string name="about_app">About App</string>
+    <string name="language">Languange</string>
+    <string name="media">Media</string>
+    <string name="content_title">Content Title</string>
+    <string name="content_category">Content Category</string>
+    <string name="avatar">Avatar</string>
 </resources>
