@@ -24,6 +24,7 @@
     <string name="log_out">Logout</string>
     <string name="about_app">About App</string>
     <string name="language">Languange</string>
+    <string name="account">Account</string>
     <string name="media">Media</string>
     <string name="content_title">Content Title</string>
     <string name="content_category">Content Category</string>
