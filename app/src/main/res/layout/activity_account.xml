@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/text_username"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
@@ -34,7 +34,7 @@
 
     <TextView
         android:id="@+id/text_email"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
@@ -47,7 +47,7 @@
 
     <TextView
         android:id="@+id/text_password"
-        android:layout_width="0dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="18dp"
