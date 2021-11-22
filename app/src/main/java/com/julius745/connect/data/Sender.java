@@ -21,7 +21,7 @@ public class Sender extends AsyncTask<Void,Void,String> {
     Context c;
     String urlAddress;
     EditText usernameTxt, passwordTxt;
-    String username, password;
+    String email, password;
     ProgressDialog pd;
 
     public Sender(Context c, String urlAddress, EditText...editTexts){
@@ -31,7 +31,7 @@ public class Sender extends AsyncTask<Void,Void,String> {
         this.usernameTxt=editTexts[0];
         this.passwordTxt=editTexts[1];
 
-        username = usernameTxt.getText().toString();
+        email = usernameTxt.getText().toString();
         password = passwordTxt.getText().toString();
     }
     @Override
@@ -74,7 +74,7 @@ public class Sender extends AsyncTask<Void,Void,String> {
             OutputStream os=con.getOutputStream();
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            bw.write(new DataPackager(username, password).packData());
+            bw.write(new DataPackager(email, password).packData());
             bw.flush();
             bw.close();
             os.close();

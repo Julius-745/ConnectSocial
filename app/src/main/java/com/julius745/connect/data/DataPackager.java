@@ -8,10 +8,10 @@ import java.net.URLEncoder;
 import java.util.Iterator;
 
 public class DataPackager {
-    String username, password;
+    String email, password;
 
-    public DataPackager(String username,String password){
-        this.username = username;
+    public DataPackager(String email,String password){
+        this.email = email;
         this.password = password;
     }
 
@@ -20,7 +20,7 @@ public class DataPackager {
         StringBuffer packedData = new StringBuffer();
 
         try{
-            jo.put("username", username);
+            jo.put("email", email);
             jo.put("password", password);
 
             Boolean firstvalue = true;

@@ -20,13 +20,33 @@ USE `connectsocial`;
 -- Dumping structure for table connectsocial.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `lang` varchar(50) DEFAULT "id",
   `password` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  UNIQUE KEY `email` (`email`)
+);
 
--- Dumping data for table connectsocial.users: ~0 rows (approximately)
+-- Dumping structure for table connectsocial.users
+CREATE TABLE IF NOT EXISTS `posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(1024) DEFAULT NULL,
+  `content` varchar(1024) DEFAULT NULL,
+  `image` varchar(1024) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `timestamp` timestamp DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`)
+);
+
+-- Dumping structure for table connectsocial.users
+CREATE TABLE IF NOT EXISTS `posts_likes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `post_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+);
+
 DELETE FROM `users`;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;

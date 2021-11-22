@@ -1,0 +1,18 @@
+{
+    "name": "connect-social/system",
+    "autoload": {
+        "psr-4": {
+            "ConnectSocial\\System\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Wildan M",
+            "email": "willnode@wellosoft.net"
+        }
+    ],
+    "require": {
+        "delight-im/file-upload": "^1.2",
+        "paragonie/easydb": "^2.11"
+    }
+}
