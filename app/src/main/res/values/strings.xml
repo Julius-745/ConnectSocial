@@ -29,4 +29,5 @@
     <string name="content_title">Content Title</string>
     <string name="content_category">Content Category</string>
     <string name="avatar">Avatar</string>
+    <string name="Image">Image</string>
 </resources>
