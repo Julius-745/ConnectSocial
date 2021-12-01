@@ -11,7 +11,8 @@ import com.julius745.connect.R;
 import com.julius745.connect.data.Sender;
 
 public class RegisterActivity extends AppCompatActivity {
-    String urlAddress="http://10.0.2.2:3000/register.php";
+    String urlAddress="https://connectsocial.domcloud.io/register.php";
+
     EditText usernameTxt, passwordTxt;
     Button saveBtn;
     @Override
