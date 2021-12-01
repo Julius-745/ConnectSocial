@@ -19,4 +19,5 @@ try {
     echo json_encode(array("message" => "OK"));
 } catch (\Throwable $th) {
     echo json_encode(array("message" => "Email atau password sudah ada"));
+    throw $th;
 }
