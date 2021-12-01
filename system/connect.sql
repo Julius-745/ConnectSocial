@@ -34,9 +34,8 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `content` varchar(1024) DEFAULT NULL,
   `image` varchar(1024) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `timestamp` timestamp DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`)
+  `timestamp` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 );
 
 -- Dumping structure for table connectsocial.users
@@ -44,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `posts_likes` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `post_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`id`)
 );
 
 DELETE FROM `users`;

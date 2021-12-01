@@ -20,17 +20,19 @@ public class Sender extends AsyncTask<Void,Void,String> {
 
     Context c;
     String urlAddress;
-    EditText usernameTxt, passwordTxt;
-    String email, password;
+    EditText nameTxt, usernameTxt, passwordTxt;
+    String name, email, password;
     ProgressDialog pd;
 
     public Sender(Context c, String urlAddress, EditText...editTexts){
         this.c = c;
         this.urlAddress = urlAddress;
 
-        this.usernameTxt=editTexts[0];
-        this.passwordTxt=editTexts[1];
+        this.nameTxt=editTexts[0];
+        this.usernameTxt=editTexts[1];
+        this.passwordTxt=editTexts[2];
 
+        name = nameTxt.getText().toString();
         email = usernameTxt.getText().toString();
         password = passwordTxt.getText().toString();
     }
@@ -56,6 +58,7 @@ public class Sender extends AsyncTask<Void,Void,String> {
         if (response != null){
             Toast.makeText(c, response, Toast.LENGTH_LONG).show();
 
+            nameTxt.setText("");
             usernameTxt.setText("");
             passwordTxt.setText("");
         }else{
@@ -74,7 +77,7 @@ public class Sender extends AsyncTask<Void,Void,String> {
             OutputStream os=con.getOutputStream();
 
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
-            bw.write(new DataPackager(email, password).packData());
+            bw.write(new DataPackager(name, email, password).packData());
             bw.flush();
             bw.close();
             os.close();

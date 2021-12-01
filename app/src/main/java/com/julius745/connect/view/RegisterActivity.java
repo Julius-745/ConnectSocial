@@ -13,21 +13,22 @@ import com.julius745.connect.data.Sender;
 public class RegisterActivity extends AppCompatActivity {
     String urlAddress="https://connectsocial.domcloud.io/register.php";
 
-    EditText usernameTxt, passwordTxt;
+    EditText emailTxt, nameTxt, passwordTxt;
     Button saveBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        usernameTxt = (EditText) findViewById(R.id.nameInput);
+        emailTxt = (EditText) findViewById(R.id.nameInput);
+        nameTxt = (EditText) findViewById(R.id.emailInput);
         passwordTxt = (EditText) findViewById(R.id.passwordInput);
         saveBtn = (Button) findViewById(R.id.btn_signup);
 
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Sender s = new Sender(RegisterActivity.this,urlAddress,usernameTxt,passwordTxt);
+                Sender s = new Sender(RegisterActivity.this,urlAddress,nameTxt,emailTxt,passwordTxt);
                 s.execute();
             }
         });
