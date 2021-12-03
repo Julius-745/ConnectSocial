@@ -20,6 +20,7 @@ USE `connectsocial`;
 -- Dumping structure for table connectsocial.users
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `lang` varchar(50) DEFAULT "id",
   `password` varchar(50) DEFAULT NULL,
