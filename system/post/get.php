@@ -9,6 +9,7 @@ if (!$_SESSION) {
 
 if (!isset($_GET['id'])) {
     header("HTTP/1.1 403 Forbidden");
+    echo json_encode(array("message" => "id required"));
     exit;
 }
 

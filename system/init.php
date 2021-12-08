@@ -7,4 +7,4 @@ $db = \ParagonIE\EasyDB\Factory::fromArray([
 ]);
 date_default_timezone_set('Asia/Jakarta');
 session_start();
-header("Content-Type", "application/json");
+header("Content-Type: application/json");

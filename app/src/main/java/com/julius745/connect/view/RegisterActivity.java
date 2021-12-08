@@ -46,13 +46,13 @@ public class RegisterActivity extends AppCompatActivity {
                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                        finish();
                    } else {
-                       Toast.makeText(getApplicationContext(), "" + response.body().get("message"), Toast.LENGTH_LONG).show();
+                       Toast.makeText(RegisterActivity.this, "Got code " + response.code(), Toast.LENGTH_LONG).show();
                    }
                }
 
                @Override
                public void onFailure(Call<Map> call, Throwable t) {
-                   Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                   Toast.makeText(RegisterActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                }
            });
         });

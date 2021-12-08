@@ -9,6 +9,7 @@ if (!$_SESSION) {
 
 if (!isset($_POST['content'])) {
     header("HTTP/1.1 400 Bad Request");
+    echo json_encode(array("message" => "content required"));
     exit;
 }
 
@@ -25,8 +26,8 @@ try {
         'content' => $_POST['content'],
         'image' => $image,
     ]);
-    echo json_encode(array("status" => 1, "message" => "OK"));
+    echo json_encode(array("message" => "OK"));
 } catch (\Exception $e) {
     header("HTTP/1.1 500 Internal Server Error");
-    echo json_encode(array("status" => 0, "message" => "Error"));
+    echo json_encode(array("message" => "Error"));
 }
