@@ -20,7 +20,7 @@ public interface BackendInterface {
     @POST("login.php")
     Call<Map> login(@Field("email") String email, @Field("pass") String pass);
     @FormUrlEncoded
-    @POST("login.php")
+    @POST("register.php")
     Call<Map> register(@Field("name") String name, @Field("email") String email, @Field("password") String pass);
     @GET("post/get.php")
     Call<Map> postGet(@Query("id") String id);

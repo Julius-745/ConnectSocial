@@ -46,7 +46,7 @@ public class RegisterActivity extends AppCompatActivity {
                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
                        finish();
                    } else {
-                       Toast.makeText(RegisterActivity.this, "Got code " + response.code(), Toast.LENGTH_LONG).show();
+                       Toast.makeText(RegisterActivity.this, response.raw().body().toString(), Toast.LENGTH_LONG).show();
                    }
                }
 
