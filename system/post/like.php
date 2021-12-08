@@ -25,6 +25,7 @@ if (!$row) {
     }
 
     echo json_encode([
+        "status" => 1,
         "liked" => $_POST['liked'] == "true",
     ]);
 }

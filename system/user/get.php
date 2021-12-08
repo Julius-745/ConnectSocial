@@ -8,5 +8,5 @@ if (!$_SESSION) {
 }
 
 echo json_encode($db->row("SELECT * FROM users WHERE id = :id", array(
-    ":id" => $_SESSION["user_id"]
+    ":id" => $_SESSION["id"]
 )));

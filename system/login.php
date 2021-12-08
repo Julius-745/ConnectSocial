@@ -12,8 +12,8 @@ $row = $db->row("SELECT * FROM users WHERE email = ? AND password = ?", $_POST['
 if ($row) {
     session_regenerate_id(true);
     $_SESSION["id"] = $row["id"];
-    echo json_encode(array("message" => "OK"));
+    echo json_encode(array("status" => 1, "message" => "OK"));
 } else {
     header("HTTP/1.1 403 Forbidden");
-    echo json_encode(array("message" => "Salah email atau password"));
+    echo json_encode(array("status" => 0, "message" => "Salah email atau password"));
 }

@@ -16,8 +16,8 @@ try {
         'email' => $data['email'],
         'password' => $data['password']
     ]);
-    echo json_encode(array("message" => "OK"));
+    echo json_encode(array("status" => 1, "message" => "OK"));
 } catch (\Throwable $th) {
-    echo json_encode(array("message" => "Email atau password sudah ada"));
+    echo json_encode(array("status" => 0, "message" => "Email atau password sudah ada"));
     throw $th;
 }

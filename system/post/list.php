@@ -13,6 +13,6 @@ if (!isset($_GET['offset'])) {
     $offset = $_GET['offset'];
 }
 
-$stmt = $db->run("SELECT * FROM posts LIMIT 30 OFFSET :offset");
+$stmt = $db->run("SELECT * FROM posts LIMIT 30 OFFSET ? ORDER BY id DESC", $offset);
 
 echo json_encode($stmt);

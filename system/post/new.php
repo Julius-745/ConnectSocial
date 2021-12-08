@@ -20,12 +20,13 @@ try {
     $uploadedFile = $upload->save();
     $image = '/images/' . $uploadedFile->getFilenameWithExtension();
     $db->insert('posts', [
-        'user_id' => $_SESSION['user_id'],
+        'user_id' => $_SESSION['id'],
         'title' => $_POST['title'],
         'content' => $_POST['content'],
         'image' => $image,
     ]);
+    echo json_encode(array("status" => 1, "message" => "OK"));
 } catch (\Exception $e) {
     header("HTTP/1.1 500 Internal Server Error");
-    exit;
+    echo json_encode(array("status" => 0, "message" => "Error"));
 }

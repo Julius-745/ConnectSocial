@@ -7,24 +7,56 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.julius745.connect.MainActivity;
 import com.julius745.connect.R;
+import com.julius745.connect.SplashScreenActivity;
+import com.julius745.connect.data.BackendService;
+
+import org.json.JSONObject;
+
+import java.util.Map;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    Button btnsignup;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        btnsignup = findViewById(R.id.btn_signup);
+        EditText emailTxt = findViewById(R.id.emailInput);
+        EditText passwordTxt = findViewById(R.id.passwordInput);
+        Button signIn = findViewById(R.id.btn_login);
+        Button signUp = findViewById(R.id.btn_signup);
 
-        btnsignup.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-            }
+        signUp.setOnClickListener(view -> {
+            Intent main = new Intent(LoginActivity.this, RegisterActivity.class);
+            LoginActivity.this.startActivity(main);
+        });
+
+        signIn.setOnClickListener(view -> {
+            Call<Map> obj = BackendService.service.login(
+                    emailTxt.getText().toString(),
+                    passwordTxt.getText().toString());
+
+            obj.enqueue(new Callback<Map>() {
+                @Override
+                public void onResponse(Call<Map> call, Response<Map> response) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                }
+
+                @Override
+                public void onFailure(Call<Map> call, Throwable t) {
+                    Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
     };
