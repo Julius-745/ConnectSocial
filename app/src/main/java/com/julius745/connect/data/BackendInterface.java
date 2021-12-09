@@ -36,4 +36,6 @@ public interface BackendInterface {
     @POST("user/edit.php")
     Call<Map> userEdit(@Field("name") String name, @Field("email") String email,
                               @Field("password") String password, @Field("lang") String lang);
+    @GET("user/get.php")
+    Call<Map> userGet();
 }

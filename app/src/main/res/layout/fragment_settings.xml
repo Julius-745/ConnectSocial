@@ -60,21 +60,6 @@
             android:textColor="@color/white" />
 
         <Button
-            android:id="@+id/btn_languange"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginHorizontal="5dp"
-            android:text="@string/language"
-            android:drawableLeft="@drawable/ic_language"
-            android:textAlignment="viewStart"
-            android:padding="10dp"
-            android:drawablePadding="10dp"
-            android:layout_marginTop="10dp"
-            android:textColor="@color/white"
-            android:drawableRight="@drawable/ic_next"
-            />
-
-        <Button
             android:id="@+id/btn_about"
             android:layout_width="match_parent"
             android:layout_height="70dp"
