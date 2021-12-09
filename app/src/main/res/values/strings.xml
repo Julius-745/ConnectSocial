@@ -30,4 +30,5 @@
     <string name="content_category">Content Category</string>
     <string name="avatar">Avatar</string>
     <string name="Image">Image</string>
+    <string name="update">update</string>
 </resources>
