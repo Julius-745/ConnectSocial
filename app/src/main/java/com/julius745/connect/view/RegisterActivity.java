@@ -34,6 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         Button saveBtn = findViewById(R.id.btn_signup);
 
         saveBtn.setOnClickListener(view -> {
+            // Menyimpan data pada BackendService
            Call<Map> obj = BackendService.service.register(
                     nameTxt.getText().toString(),
                     emailTxt.getText().toString(),

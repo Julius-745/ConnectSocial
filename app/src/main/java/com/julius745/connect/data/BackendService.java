@@ -21,13 +21,19 @@ import retrofit2.converter.moshi.MoshiConverterFactory;
 public class BackendService {
     static public BackendInterface service;
 
+    // Mempreparasi Backend untuk koneksi ke server
     static public void initService(Context context) {
+        //Moshi2 merupakan build JSON parsher
         Moshi moshi = new Moshi.Builder().build();
+        //Build OkhttpClient merupakan Http Client
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
+        //Biar coockienya bekerja
         builder.addInterceptor(new AddCookiesInterceptor(context)); // VERY VERY IMPORTANT
         builder.addInterceptor(new ReceivedCookiesInterceptor(context)); // VERY VERY IMPORTANT
+        //Fungsi ini membuat data tercatat di logcat
         HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
         logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        //Untuk melimit waktu jika koneksi tidak terhubung
         builder.connectTimeout(10, TimeUnit.SECONDS)
                 .writeTimeout(20, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS);
@@ -45,6 +51,7 @@ public class BackendService {
  * This interceptor put all the Cookies in Preferences in the Request.
  * Your implementation on how to get the Preferences may ary, but this will work 99% of the time.
  */
+//Ini merupakan copypaste dari kitab suci
 class AddCookiesInterceptor implements Interceptor {
     public static final String PREF_COOKIES = "PREF_COOKIES";
     // We're storing our stuff in a database made just for cookies called PREF_COOKIES.
