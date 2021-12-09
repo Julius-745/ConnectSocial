@@ -35,16 +35,18 @@ public class LoginActivity extends AppCompatActivity {
         Button signIn = findViewById(R.id.btn_login);
         Button signUp = findViewById(R.id.btn_signup);
 
+        //  Membuka registrasi activity
         signUp.setOnClickListener(view -> {
             Intent main = new Intent(LoginActivity.this, RegisterActivity.class);
             LoginActivity.this.startActivity(main);
         });
 
         signIn.setOnClickListener(view -> {
+            // Program ini untuk mengirim email dan password dan dibungkus oleh Call -> kepada BackendInterface (login PHP)
             Call<Map> obj = BackendService.service.login(
                     emailTxt.getText().toString(),
                     passwordTxt.getText().toString());
-
+            // Jika respon sudah terkirim pada PHP response
             obj.enqueue(new Callback<Map>() {
                 @Override
                 public void onResponse(Call<Map> call, Response<Map> response) {
@@ -55,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         Toast.makeText(LoginActivity.this, response.raw().body().toString(), Toast.LENGTH_LONG).show();
                     }
                 }
-
+            // Jika respon gagal biasanya terjadi karena tidak terdapat koneksi
                 @Override
                 public void onFailure(Call<Map> call, Throwable t) {
                     Toast.makeText(LoginActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();

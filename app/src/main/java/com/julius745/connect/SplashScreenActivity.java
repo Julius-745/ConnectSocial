@@ -19,7 +19,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         // title bar nya dihabis
         getSupportActionBar().hide();
-        // init retrofit
+        // init retrofit > sebagai plug in untuk connect ke backend server
         BackendService.initService(getApplicationContext());
         // delay 2 detik (SPLASH_LENGTH)
         new Handler().postDelayed(new Runnable() {
@@ -27,7 +27,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             public void run() {
                 // ambil mainactivity
                 Intent main = new Intent(SplashScreenActivity.this, LoginActivity.class);
-                // load mainactivity (bagian e julius)
+                // load login
                 SplashScreenActivity.this.startActivity(main);
                 SplashScreenActivity.this.finish();
             }
