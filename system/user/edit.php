@@ -7,9 +7,9 @@ if (!$_SESSION) {
     exit;
 }
 
-echo json_encode($db->update("users", array_intersect_key(
+echo json_encode($db->update("users", array_filter(array_intersect_key(
     $_POST,
     array_flip(["name", "email", "password", "lang"])
-), array(
-    "id" => $_SESSION["user"]["id"]
+)), array(
+    "id" => $_SESSION["id"]
 )));

@@ -9,6 +9,7 @@ if (!$_SESSION) {
 
 if (!isset($_POST['content'])) {
     header("HTTP/1.1 400 Bad Request");
+    echo json_encode(array("message" => "content required"));
     exit;
 }
 
@@ -20,12 +21,13 @@ try {
     $uploadedFile = $upload->save();
     $image = '/images/' . $uploadedFile->getFilenameWithExtension();
     $db->insert('posts', [
-        'user_id' => $_SESSION['user_id'],
+        'user_id' => $_SESSION['id'],
         'title' => $_POST['title'],
         'content' => $_POST['content'],
         'image' => $image,
     ]);
+    echo json_encode(array("message" => "OK"));
 } catch (\Exception $e) {
     header("HTTP/1.1 500 Internal Server Error");
-    exit;
+    echo json_encode(array("message" => "Error"));
 }

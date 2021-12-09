@@ -7,8 +7,9 @@ if (!$_SESSION) {
     exit;
 }
 
-if (!isset($_POST['liked'])) {
+if (!isset($_POST['liked'], $_GET['id'])) {
     header("HTTP/1.1 403 Forbidden");
+    echo json_encode(array("message" => "id, liked required"));
     exit;
 }
 
@@ -25,6 +26,7 @@ if (!$row) {
     }
 
     echo json_encode([
+        "status" => 1,
         "liked" => $_POST['liked'] == "true",
     ]);
 }

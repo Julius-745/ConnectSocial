@@ -4,6 +4,7 @@ require "init.php";
 
 if (!isset($_POST['email'], $_POST['pass'])) {
     header("HTTP/1.1 403 Forbidden");
+    echo json_encode(array("message" => "email, password required"));
     exit;
 }
 
