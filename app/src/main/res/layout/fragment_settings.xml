@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".fragment.SettingsFragment">
 
-
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -55,7 +54,7 @@
             android:drawableRight="@drawable/ic_next"
             android:drawablePadding="10dp"
             android:padding="10dp"
-            android:text="@string/account"
+            android:text="Edit Profile"
             android:textAlignment="viewStart"
             android:textColor="@color/white" />
 
