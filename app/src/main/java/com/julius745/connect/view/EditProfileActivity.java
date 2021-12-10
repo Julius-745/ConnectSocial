@@ -26,7 +26,7 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_editptofile);
 
         EditText emailTxt = findViewById(R.id.emailInput);
         EditText nameTxt = findViewById(R.id.nameInput);
@@ -52,7 +52,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 public void onResponse(Call<Map> call, Response<Map> response) {
                     if (response.isSuccessful()) {
                         // kembali ke main activity
-                        finish();
+                        finishActivity(0);
                     } else {
                         Toast.makeText(EditProfileActivity.this, response.raw().body().toString(), Toast.LENGTH_LONG).show();
                     }
