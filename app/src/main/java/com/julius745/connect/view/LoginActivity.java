@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -42,6 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         signIn.setOnClickListener(view -> {
+
             // Program ini untuk mengirim email dan password dan dibungkus oleh Call -> kepada BackendInterface (login PHP)
             Call<Map> obj = BackendService.service.login(
                     emailTxt.getText().toString(),

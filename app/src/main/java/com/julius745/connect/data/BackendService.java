@@ -103,6 +103,7 @@ class ReceivedCookiesInterceptor implements Interceptor {
             }
 
             SharedPreferences.Editor memes = PreferenceManager.getDefaultSharedPreferences(context).edit();
+            memes.remove("PREF_COOKIES");
             memes.putStringSet("PREF_COOKIES", cookies).apply();
             memes.commit();
         }

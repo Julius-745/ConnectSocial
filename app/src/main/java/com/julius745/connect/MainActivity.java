@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.julius745.connect.data.BackendService;
 import com.julius745.connect.fragment.AddpostFragment;
 import com.julius745.connect.fragment.ContentFragment;
 import com.julius745.connect.fragment.SettingsFragment;
@@ -41,6 +42,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (BackendService.service == null) {
+            startActivity(new Intent(this, SplashScreenActivity.class));
+            finish();
+            return;
+        }
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

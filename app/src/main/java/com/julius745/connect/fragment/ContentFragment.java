@@ -1,5 +1,6 @@
 package com.julius745.connect.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.julius745.connect.R;
+import com.julius745.connect.SplashScreenActivity;
 import com.julius745.connect.data.BackendService;
 import com.julius745.connect.data.ContentAdapter;
 import com.julius745.connect.view.AccountActivity;
@@ -42,6 +44,9 @@ public class ContentFragment extends Fragment {
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(v.getContext());
         rv.setLayoutManager(mLayoutManager);
 
+        if (BackendService.service == null) {
+            return v;
+        }
 
         // load data user yang login dari server
         Call<List<Map>> obj = BackendService.service.postList(0);

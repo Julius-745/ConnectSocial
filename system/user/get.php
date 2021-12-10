@@ -7,6 +7,4 @@ if (!$_SESSION) {
     exit;
 }
 
-echo json_encode($db->row("SELECT * FROM users WHERE id = :id", array(
-    ":id" => $_SESSION["id"]
-)));
+echo json_encode($db->row("SELECT * FROM users WHERE id = ?", $_SESSION["id"]));

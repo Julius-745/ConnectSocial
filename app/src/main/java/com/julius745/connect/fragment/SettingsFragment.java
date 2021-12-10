@@ -21,6 +21,10 @@ import com.julius745.connect.view.LoginActivity;
 
 import java.util.Map;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class SettingsFragment extends Fragment {
     Map userData;
     public SettingsFragment() {
@@ -46,10 +50,10 @@ public class SettingsFragment extends Fragment {
         logoutBtn.setOnClickListener(view -> {
             startActivity(new Intent(this.getContext(), LoginActivity.class));
             // biar diklik back tidak kesini lagi
-            finish();
+            getActivity().finish();
         });
 
-        editBtn.setOnClickListener(view -> {AccountActivity
+        editBtn.setOnClickListener(view -> {
             // ke EditProfileActivity + kirim data user
             Intent intent = new Intent(this.getContext(), EditProfileActivity.class);
             intent.putExtra("name", userData.get("name").toString());
@@ -68,14 +72,14 @@ public class SettingsFragment extends Fragment {
                     userData = response.body(); //data disimpan terlebih dahulu untuk baris 49
                     name.setText(userData.get("name").toString());
                 } else {
-                    Toast.makeText(AccountActivity.this, response.raw().body().toString(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(v.getContext(), response.raw().body().toString(), Toast.LENGTH_LONG).show();
                     name.setText("(error)");
                 }
             }
 
             @Override
             public void onFailure(Call<Map> call, Throwable t) {
-                Toast.makeText(AccountActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                Toast.makeText(v.getContext(), t.getMessage(), Toast.LENGTH_LONG).show();
                 name.setText("(error)");
             }
         });
