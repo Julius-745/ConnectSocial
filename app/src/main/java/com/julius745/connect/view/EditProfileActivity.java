@@ -33,18 +33,20 @@ public class EditProfileActivity extends AppCompatActivity {
         EditText passwordTxt = findViewById(R.id.passwordInput);
         Button saveBtn = findViewById(R.id.btn_send);
 
-        // masukkan data user sekarang
+        // masukkan data user sekarang ( data user sekarang dari activity sebelumnya > AccountActivity )
         emailTxt.setText(getIntent().getStringExtra("email"));
         nameTxt.setText(getIntent().getStringExtra("name"));
 
+        // Funsgi ini untuk menyimpan data user berupa nama,email dan password
         saveBtn.setOnClickListener(view -> {
             Call<Map> obj = BackendService.service.userEdit(
                     nameTxt.getText().toString(),
                     emailTxt.getText().toString(),
                     passwordTxt.getText().toString(),
-                    // lang gak dipakek
+                    // lang ini dibiarkan kosong karena tidak dipakai
                     "");
 
+            // Mengirim data ke server dan menunggu hasil ke dalam Callback
             obj.enqueue(new Callback<Map>() {
                 @Override
                 public void onResponse(Call<Map> call, Response<Map> response) {
@@ -58,6 +60,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Map> call, Throwable t) {
+                    //jika koneksi gagal
                     Toast.makeText(EditProfileActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
                 }
             });

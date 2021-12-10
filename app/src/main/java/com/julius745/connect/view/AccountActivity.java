@@ -52,14 +52,14 @@ public class AccountActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // load data user yang login dari server
+        // load data user yang login dari server untuk mengambil nama pada profil
         Call<Map> obj = BackendService.service.userGet();
 
         obj.enqueue(new Callback<Map>() {
             @Override
             public void onResponse(Call<Map> call, Response<Map> response) {
                 if (response.isSuccessful()) {
-                    userData = response.body();
+                    userData = response.body(); //data disimpan terlebih dahulu untuk baris 49
                     name.setText(userData.get("name").toString());
                 } else {
                     Toast.makeText(AccountActivity.this, response.raw().body().toString(), Toast.LENGTH_LONG).show();
