@@ -12,15 +12,18 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -30,7 +33,10 @@ import com.julius745.connect.fragment.AddpostFragment;
 import com.julius745.connect.fragment.ContentFragment;
 import com.julius745.connect.fragment.SettingsFragment;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.util.Arrays;
 import java.util.Date;
 
 
@@ -103,35 +109,69 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
-        final String dir = Environment.getExternalStorageDirectory() + "/ConnectSocial/Posts/";
-        File newdir = new File(dir);
-        newdir.mkdirs();
-        File newfile = new File(dir + System.currentTimeMillis() + ".jpg");
-        outputFileUri = Uri.fromFile(newfile);
-
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-
-        startActivityIfNeeded(cameraIntent, 42);
+        Intent intent = new Intent("android.media.action.IMAGE_CAPTURE");
+        File photo;
+        try {
+            // place where to store camera taken picture
+            photo = createTemporaryFile("capture", ".jpg");
+            photo.delete();
+        } catch (Exception e) {
+            Log.v("Djsce Image capture", "Can't create file to take picture!");
+            Toast.makeText(getApplicationContext(), "Please check SD card! Image shot is impossible!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        mImageUri = Uri.fromFile(photo);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
+        startActivityIfNeeded(intent, 42);
     }
 
     @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 43) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                if(Arrays.stream(grantResults).allMatch(x -> x == PackageManager.PERMISSION_GRANTED)) {
+                    takeImage();
+                } else {
+                    Toast.makeText(this, "Gagal mengakses Kamera", Toast.LENGTH_LONG).show();
+                }
+            }
+        }
+    }
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 43) {
-            if (resultCode == 0) {
-               takeImage();
-            } else {
-                Toast.makeText(this, "Gagal mengakses Kamera", Toast.LENGTH_LONG);
-            }
-        }
-        if (requestCode == 42) {
-            if (resultCode == 0) {
-                addpostFragment.setImage(outputFileUri);
+        if (requestCode == 42 && resultCode == RESULT_OK) {
+            File f = grabImageFile();
+            if(f!=null){
+                Toast.makeText(getApplicationContext(),"File to upload is " + f.getAbsolutePath(),Toast.LENGTH_LONG).show();
+                addpostFragment.setImage(Uri.fromFile(f));
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_container, addpostFragment).commit();
-            } else {
-                bottomNavigationView.setSelectedItemId(R.id.dashboard);
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"Image Capture Error",Toast.LENGTH_LONG).show();
             }
         }
+    }
+    private Uri mImageUri;
+    private File createTemporaryFile(String part, String ext) throws Exception {
+        File tempDir = Environment.getExternalStorageDirectory();
+        tempDir = new File(tempDir.getAbsolutePath() + "/connect_posts/");
+        if (!tempDir.exists()) {
+            assert (tempDir.mkdirs());
+        }
+        return File.createTempFile(part, ext, tempDir);
+    }
+
+    public File grabImageFile() {
+        File returnFile = null;
+        try {
+            //InputStream is = getContentResolver().openInputStream(mImageUri);
+            returnFile = new File(mImageUri.getPath());//
+        } catch (Exception e){
+            Log.e("Image Capture Error",e.getMessage());
+        }
+        return returnFile;
     }
 }

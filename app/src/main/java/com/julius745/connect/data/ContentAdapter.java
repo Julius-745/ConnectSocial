@@ -62,7 +62,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
                     }
                 }
             });
-            titleView = v.findViewById(R.id.tv_name);
+            titleView = v.findViewById(R.id.tv_title);
             contentView = v.findViewById(R.id.tv_desctiption);
             imageView = v.findViewById(R.id.iv_media);
         }
@@ -84,7 +84,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         // Create a new view.
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.fragment_content, viewGroup, false);
+                .inflate(R.layout.item_content_view, viewGroup, false);
 
         return new ViewHolder(v);
     }
@@ -96,7 +96,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
         // Get element from your dataset at this position and replace the contents of the view
         // with that element
         viewHolder.titleView.setText(mDataSet.get(position).get("title").toString());
-        viewHolder.contentView.setText("Rp " + mDataSet.get(position).get("content").toString());
+        viewHolder.contentView.setText(mDataSet.get(position).get("content").toString());
         viewHolder.data = mDataSet.get(position);
     }
 

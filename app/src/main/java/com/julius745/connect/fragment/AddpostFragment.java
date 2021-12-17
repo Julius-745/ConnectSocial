@@ -23,6 +23,8 @@ import com.julius745.connect.data.BackendService;
 import com.julius745.connect.view.RegisterActivity;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Map;
 
 import okhttp3.MediaType;
@@ -53,9 +55,7 @@ public class AddpostFragment extends Fragment {
         TextInputEditText content = v.findViewById(R.id.contentInput);
         Button btn = v.findViewById(R.id.btn_send);
         ImageView myImage = v.findViewById(R.id.imageView);
-        Bitmap myBitmap = BitmapFactory.decodeFile(image.getPath());
-        myImage.setImageBitmap(myBitmap);
-
+        myImage.setImageURI(image);
         btn.setOnClickListener(view -> {
             File file = new File(image.getPath());
             RequestBody requestFile =

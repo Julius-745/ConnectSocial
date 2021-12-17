@@ -96,16 +96,11 @@ class ReceivedCookiesInterceptor implements Interceptor {
         Response originalResponse = chain.proceed(chain.request());
 
         if (!originalResponse.headers("Set-Cookie").isEmpty()) {
-            HashSet<String> cookies = (HashSet<String>) PreferenceManager.getDefaultSharedPreferences(context).getStringSet("PREF_COOKIES", new HashSet<String>());
-
-            for (String header : originalResponse.headers("Set-Cookie")) {
-                cookies.add(header);
-            }
-
             SharedPreferences.Editor memes = PreferenceManager.getDefaultSharedPreferences(context).edit();
+
             memes.remove("PREF_COOKIES").apply();
-            memes.putStringSet("PREF_COOKIES", cookies).apply();
-            memes.commit();
+            memes.putStringSet("PREF_COOKIES", new HashSet<String>(originalResponse.headers("Set-Cookie"))).apply();
+            assert(memes.commit());
         }
 
         return originalResponse;
