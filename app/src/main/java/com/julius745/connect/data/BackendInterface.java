@@ -27,7 +27,7 @@ public interface BackendInterface {
     @GET("post/list.php")
     Call<List<Map>> postList(@Query("offset") Integer offset);
     @Multipart
-    @POST("post/list.php")
+    @POST("post/new.php")
     Call<Map> postNew(@Part("title") String title, @Part("content") String content, @Part MultipartBody.Part image);
     @FormUrlEncoded
     @POST("post/like.php")

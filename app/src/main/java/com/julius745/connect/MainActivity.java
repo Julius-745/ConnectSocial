@@ -71,7 +71,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
+        return switchNavigation(item.getItemId());
+    }
+
+    public boolean switchNavigation (int id) {
+        switch (id) {
             case R.id.dashboard:
                 getSupportFragmentManager().beginTransaction().replace(R.id.main_container, contentFragment).commit();
                 return true;

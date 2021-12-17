@@ -73,6 +73,7 @@ public class AddpostFragment extends Fragment {
                 public void onResponse(Call<Map> call, Response<Map> response) {
                     if (response.isSuccessful()) {
                         Toast.makeText(v.getContext(), "Sudah diupload!", Toast.LENGTH_LONG).show();
+                        ((MainActivity)getActivity()).switchNavigation(R.id.dashboard);
                     } else {
                         Toast.makeText(v.getContext(), response.raw().body().toString(), Toast.LENGTH_LONG).show();
                     }
