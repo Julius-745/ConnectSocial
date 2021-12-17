@@ -18,7 +18,9 @@ package com.julius745.connect.data;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Parcelable;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,8 +29,10 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.julius745.connect.R;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Map;
 
@@ -97,6 +101,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.ViewHold
         // with that element
         viewHolder.titleView.setText(mDataSet.get(position).get("title").toString());
         viewHolder.contentView.setText(mDataSet.get(position).get("content").toString());
+        String imgurl = "https://connectsocial.domcloud.io" +mDataSet.get(position).get("image").toString();
+        Glide.with(viewHolder.itemView).load(imgurl).into(viewHolder.imageView);
         viewHolder.data = mDataSet.get(position);
     }
 
