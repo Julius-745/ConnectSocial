@@ -105,7 +105,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
                  Uri outputFileUri;
     void takeImage() {
-        // bypass security
+        // android.os.FileUriExposedException workaround
         StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
         StrictMode.setVmPolicy(builder.build());
 
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         }
         mImageUri = Uri.fromFile(photo);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mImageUri);
-        startActivityIfNeeded(intent, 42);
+        startActivityForResult(intent, 42);
     }
 
     @Override
@@ -156,11 +156,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
     private Uri mImageUri;
     private File createTemporaryFile(String part, String ext) throws Exception {
-        File tempDir = Environment.getExternalStorageDirectory();
-        tempDir = new File(tempDir.getAbsolutePath() + "/connect_posts/");
-        if (!tempDir.exists()) {
-            assert (tempDir.mkdirs());
-        }
+        File tempDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
         return File.createTempFile(part, ext, tempDir);
     }
 
