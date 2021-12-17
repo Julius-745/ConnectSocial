@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.julius745.connect.R;
@@ -17,6 +18,7 @@ import com.julius745.connect.SplashScreenActivity;
 import com.julius745.connect.data.BackendService;
 import com.julius745.connect.data.ContentAdapter;
 import com.julius745.connect.view.AccountActivity;
+import com.julius745.connect.view.DetailContent;
 
 import java.util.List;
 import java.util.Map;
@@ -27,7 +29,7 @@ import retrofit2.Response;
 
 
 public class ContentFragment extends Fragment {
-
+    Button detCont;
     public ContentFragment() {
         // Required empty public constructor
     }
@@ -38,6 +40,7 @@ public class ContentFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_content, container, false);
         RecyclerView rv = v.findViewById(R.id.content_view);
+        detCont = v.findViewById(R.id.ll_media);
         // LinearLayoutManager is used here, this will layout the elements in a similar fashion
         // to the way ListView would layout elements. The RecyclerView.LayoutManager defines how
         // elements are laid out.
@@ -47,6 +50,11 @@ public class ContentFragment extends Fragment {
         if (BackendService.service == null) {
             return v;
         }
+
+        //detCont.setOnClickListener(view -> {
+        //    Intent intent = new Intent(this.getContext(), DetailContent.class);
+        //    startActivity(intent);
+        //});
 
         // load data user yang login dari server
         Call<List<Map>> obj = BackendService.service.postList(0);
